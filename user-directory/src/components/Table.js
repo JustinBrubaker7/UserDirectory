@@ -1,4 +1,6 @@
-/* This example requires Tailwind CSS v2.0+ */
+import React, { useState, useEffect } from 'react';
+import API from '../utils/API'
+
 const people = [
     { name: 'Jane Cooper', title: 'Regional Paradigm Technician', role: 'Admin', email: 'jane.cooper@example.com' },
     { name: 'Cody Fisher', title: 'Product Directives Officer', role: 'Owner', email: 'cody.fisher@example.com' },
@@ -6,6 +8,22 @@ const people = [
   ]
   
   export default function Table() {
+
+    const [users, setUsers] = useState()
+    const [userId, setUserId] = useState(0)
+  
+    useEffect(() => {
+        getUserData();
+    }, [userId])
+
+    const getUserData = async () => {
+
+        const apiCall = await fetch('https://randomuser.me/api/?results=10')
+        const userData = await apiCall.json()
+        setUsers(userData)
+        console.log(users)
+    }
+
     return (
       <div className="flex flex-col">
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -62,6 +80,7 @@ const people = [
             </div>
           </div>
         </div>
+
       </div>
     )
   }

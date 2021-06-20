@@ -1,21 +1,13 @@
-import React, { setState} from 'react';
+import React from 'react';
 import './App.css';
 import './index.css';
 import Table from './components/Table'
 import  Container from './components/Container';
-// import {getUser, getUsers} from './utils/API'
-import API from './utils/API'
+
+
 
 
 function App() {
-
-  //const [user, setUser] = setState("")
-
-  const getUserData = () => {
-    API.getUser()
-    .then(res => console.log(res.data.results[0].name))
-    .catch(err => console.log(err));
-  }
 
   return (
     <div className="App">
@@ -23,7 +15,7 @@ function App() {
     <Container>
       <Table />
     </Container>
-      {getUserData()}
+      
     </div>  
   );
 }
